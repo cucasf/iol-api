@@ -15,13 +15,18 @@ class OrdenCompra:
             monto (number, optional)
         } 
     """
-    def __init__(self, mercado, simbolo,  validez, cantidad=None, monto=None, precio=0, tipo_orden=TipoDeOrden.PRECIO_LIMITE, plazo=Plazo.T2) -> None:
+    def __init__(self, mercado, simbolo,  validez=None, cantidad=None, monto=None, precio=0, tipo_orden=TipoDeOrden.PRECIO_LIMITE, plazo=Plazo.T2) -> None:
         self.type = type
         self.mercado = mercado
         self.simbolo = simbolo
         self.cantidad = cantidad
         self.precio = precio
-        self.validez = validez
+
+        if validez is not None:
+            self.validez = validez
+        else:
+            self.set_validez()
+
         self.tipo_orden = tipo_orden
         self.plazo = plazo
         self.monto = monto
@@ -40,6 +45,10 @@ class OrdenCompra:
         if self.tipo_orden == TipoDeOrden.PRECIO_LIMITE and self.precio <= 0:
             raise AttributeError("Precio debe ser mayor que 0 para tipo_orden='precioLimite'")
 
+    def set_validez(self):
+        dt = datetime.now()
+        self.validez = datetime(dt.year, dt.month, dt.day, 23, 59, 59)
+        
     def crear(self):
         ord = {
             "mercado": self.mercado,
@@ -70,13 +79,18 @@ class OrdenVenta:
         } 
     """
 
-    def __init__(self, mercado, simbolo, cantidad, validez, precio=0, tipo_orden=TipoDeOrden.PRECIO_LIMITE, plazo=Plazo.T2) -> None:
+    def __init__(self, mercado, simbolo, cantidad, validez=None, precio=0, tipo_orden=TipoDeOrden.PRECIO_LIMITE, plazo=Plazo.T2) -> None:
         self.type = type
         self.mercado = mercado
         self.simbolo = simbolo
         self.cantidad = cantidad
         self.precio = precio
-        self.validez = validez
+
+        if validez:
+            self.validez = validez
+        else:
+            self.set_validez()
+
         self.tipo_orden = tipo_orden
         self.plazo = plazo
         self._validar()
@@ -91,6 +105,10 @@ class OrdenVenta:
         if self.tipo_orden == TipoDeOrden.PRECIO_LIMITE and self.precio <= 0:
             raise AttributeError("Precio debe ser mayor que 0 para tipo_orden='precioLimite'") 
 
+    def set_validez(self):
+        dt = datetime.now()
+        self.validez = datetime(dt.year, dt.month, dt.day, 23, 59, 59)
+        
     def crear(self):
         ord = {
             "mercado": self.mercado,

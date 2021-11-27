@@ -21,6 +21,10 @@ def iol_decoder_hook(dct):
             elif re.match('([a-zA-Z]{3}, \d{2} [a-zA-Z]{3} \d{4} \d{2}\:\d{2}\:\d{2} [A-Z]{3})',v):
                 dct[k] = datetime.utcfromtimestamp(pd.to_datetime(v, format='%a, %d %b %Y %H:%M:%S %Z').timestamp())
 
+            #0001-01-01T00:00:00
+            elif re.match('(\d{4}\-\d{2}\-\d{2}T\d{2}\:\d{2}\:\d{2})',v):
+                dct[k] = datetime.strptime(v, '%Y-%m-%dT%H:%M:%S')
+
     return dct
 
 

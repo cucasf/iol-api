@@ -3,7 +3,11 @@ iol-api libreria para consumir Invertir Online API en Python
 ============================================================
 
 .. image:: https://img.shields.io/pypi/v/iol_api.svg
-        :target: https://pypi.python.org/pypi/iol_api
+    :target: https://pypi.python.org/pypi/iol_api
+
+.. image:: https://readthedocs.org/projects/iol-api/badge/?version=latest
+    :target: https://iol-api.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
 
 Que es iol-api
 --------------

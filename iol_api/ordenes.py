@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from .constants import Plazo, TipoDeOrden
+from iol_api.constants import Plazo, TipoDeOrden
 
 class OrdenCompra:
     """

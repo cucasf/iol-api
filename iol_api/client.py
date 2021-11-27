@@ -4,9 +4,9 @@ import logging
 from datetime import date
 from urllib.parse import urljoin
 
-from .constants import *
-from .utils import iol_decoder_hook, get_logger
-from .token_manager import TokenManager
+from iol_api.constants import *
+from iol_api.utils import iol_decoder_hook, get_logger
+from iol_api.token_manager import TokenManager
 
 
 BASE_URL = 'https://api.invertironline.com/api/v2/'

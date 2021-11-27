@@ -1,2 +1,2 @@
-from .client import IOLClient
-from .ordenes import OrdenCompra, OrdenFCI, OrdenVenta
+from iol_api.client import IOLClient
+from iol_api.ordenes import OrdenCompra, OrdenFCI, OrdenVenta

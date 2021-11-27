@@ -7,8 +7,8 @@ import logging
 
 from typing import Any
 
-from .constants import *
-from .utils import get_logger, iol_decoder_hook
+from iol_api.constants import *
+from iol_api.utils import get_logger, iol_decoder_hook
 
 TOKEN_ENDPOINT = 'https://api.invertironline.com/token'
 DEFAULT_HEADERS = {

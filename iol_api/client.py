@@ -1,7 +1,7 @@
 import aiohttp
 import json
 import logging
-from datetime import datetime, date
+from datetime import date
 from urllib.parse import urljoin
 
 from .constants import *
@@ -17,10 +17,10 @@ class IOLClient:
         https://api.invertironline.com
     """
 
-    def __init__(self, username: str, password: str, loggin_level=logging.NOTSET) -> None:
-        self.logger = get_logger(__name__, loggin_level)
+    def __init__(self, username: str, password: str, logging_level=logging.NOTSET) -> None:
+        self.logger = get_logger(__name__, logging_level)
         self.base_url = BASE_URL
-        self.token_manager = TokenManager(username, password, loggin_level=loggin_level)
+        self.token_manager = TokenManager(username, password, logging_level=logging_level)
         
     async def _get_headers(self):
         header = {
@@ -132,7 +132,7 @@ class IOLClient:
         path = f'{mercado}/Titulos/{simbolo}/Cotizacion'
         return await self._request('GET', path)
 
-    async def get_titulo_historicos(self, simbolo, mercado, ajustada, fecha_desde:date=date(1970, 1, 1), fecha_hasta:date=datetime.utcnow().date()):
+    async def get_titulo_historicos(self, simbolo, mercado, ajustada, fecha_desde:date=date(1970, 1, 1), fecha_hasta:date=date.today()):
         path = f'{mercado}/Titulos/{simbolo}/Cotizacion/seriehistorica/{fecha_desde.strftime("%Y-%m-%d")}/{fecha_hasta.strftime("%Y-%m-%d")}/{ajustada}'
         return await self._request('GET', path)
 

@@ -38,7 +38,7 @@ setup(
     packages=find_packages(include=['iol_api', 'iol_api.*']),
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/cucasf/iol_api',
+    url='https://github.com/cucasf/iol-api',
     version='0.1.0',
     zip_safe=False,
 )

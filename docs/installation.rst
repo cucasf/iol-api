@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/cucasf/iol_api
+.. _Github repo: https://github.com/cucasf/iol-api
 .. _tarball: https://github.com/cucasf/iol-api/tarball/master
